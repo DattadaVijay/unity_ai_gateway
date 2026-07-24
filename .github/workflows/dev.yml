@@ -23,6 +23,9 @@ jobs:
             - name: check cli version
               run: databricks --version
 
+            - name: databricks bundle validation
+              run: databricks bundle validate
+
             - name: databricks bundle deploy
               run: databricks bundle deploy --target dev --auto-approve
 

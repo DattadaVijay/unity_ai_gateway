@@ -5,8 +5,8 @@ resources:
       config:
         served_entities:
           - name: llama-3-3-70b-hosted
-            foundation_model:
-              name: system.ai.databricks-meta-llama-3-3-70b-instruct
+            entity_name: system.ai.databricks-meta-llama-3-3-70b-instruct
+            entity_version: "1"
           - name: hr-ops-agent
             entity_name: main.default.hr_ops_agent
             entity_version: "2"
@@ -14,7 +14,7 @@ resources:
           routes:
             - served_model_name: llama-3-3-70b-hosted
               traffic_percentage: 70
-            - served_model_name: registered-model-entity
+            - served_model_name: hr-ops-agent
               traffic_percentage: 30
       ai_gateway:
         usage_tracking_config:
