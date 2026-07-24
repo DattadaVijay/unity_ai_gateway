@@ -1,0 +1,26 @@
+resources:
+  model_serving_endpoints:
+    ai_gateway_demo:
+      name: ai-gateway-demo-${bundle.target}
+      config:
+        served_entities:
+          - name: llama-3-3-70b-hosted
+            foundation_model:
+              name: system.ai.databricks-meta-llama-3-3-70b-instruct
+          - name: hr-ops-agent
+            entity_name: main.default.hr_ops_agent
+            entity_version: "2"
+        traffic_config:
+          routes:
+            - served_model_name: llama-3-3-70b-hosted
+              traffic_percentage: 70
+            - served_model_name: registered-model-entity
+              traffic_percentage: 30
+      ai_gateway:
+        usage_tracking_config:
+          enabled: true
+        inference_table_config:
+          enabled: true
+          catalog_name: ${var.catalog}
+          schema_name: ${var.schema}
+          table_name_prefix: ai_gateway_demo
