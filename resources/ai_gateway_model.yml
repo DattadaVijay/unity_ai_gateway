@@ -7,7 +7,7 @@ resources:
           - name: llama-3-1-8b-hosted
             entity_name: system.ai.meta_llama_v3_1_8b_instruct
             entity_version: "3"
-            min_provisioned_throughput: 0
+            min_provisioned_throughput: 0.0
             max_provisioned_throughput: 9600
       ai_gateway:
         usage_tracking_config:
