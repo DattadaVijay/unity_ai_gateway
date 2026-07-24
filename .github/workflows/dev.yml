@@ -3,7 +3,7 @@ name: Databricks Dev Deploy
 on:
     push:
         branches:
-            -main
+            - main
     workflow_dispatch:
 
 jobs:
