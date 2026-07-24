@@ -1,12 +1,12 @@
 resources:
   model_serving_endpoints:
     llama_endpoint:
-      name: llama-3-3-70b-${bundle.target}
+      name: llama-3-1-8b-${bundle.target}
       config:
         served_entities:
-          - name: llama-3-3-70b-hosted
-            entity_name: system.ai.databricks-meta-llama-3-3-70b-instruct
-            entity_version: "1"
+          - name: llama-3-1-8b-hosted
+            entity_name: system.ai.meta_llama_v3_1_8b_instruct
+            entity_version: "3"
             min_provisioned_throughput: 0
             max_provisioned_throughput: 9600
       ai_gateway:
