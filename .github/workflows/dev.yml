@@ -21,7 +21,7 @@ jobs:
               uses: databricks/cli:latest
 
             - name: check cli version
-              uses: databricks --version
+              run: databricks --version
 
             - name: databricks bundle validate
               run: databricks bundle validate
