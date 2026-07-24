@@ -1,7 +1,7 @@
 resources:
   model_serving_endpoints:
-    ai_gateway_demo:
-      name: ai-gateway-demo-${bundle.target}
+    llama_endpoint:
+      name: llama-3-3-70b-${bundle.target}
       config:
         served_entities:
           - name: llama-3-3-70b-hosted
@@ -9,17 +9,6 @@ resources:
             entity_version: "1"
             min_provisioned_throughput: 0
             max_provisioned_throughput: 9600
-          - name: hr-ops-agent
-            entity_name: main.default.hr_ops_agent
-            entity_version: "2"
-            workload_size: Small
-            scale_to_zero_enabled: true
-        traffic_config:
-          routes:
-            - served_model_name: llama-3-3-70b-hosted
-              traffic_percentage: 70
-            - served_model_name: hr-ops-agent
-              traffic_percentage: 30
       ai_gateway:
         usage_tracking_config:
           enabled: true
@@ -27,4 +16,4 @@ resources:
           enabled: true
           catalog_name: ${var.catalog}
           schema_name: ${var.schema}
-          table_name_prefix: ai_gateway_demo
+          table_name_prefix: llama_endpoint
