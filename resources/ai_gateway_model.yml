@@ -7,13 +7,36 @@ resources:
           - name: llama-3-1-8b-hosted
             entity_name: system.ai.meta_llama_v3_1_8b_instruct
             entity_version: "3"
-            min_provisioned_throughput: 0.0
+            min_provisioned_throughput: 0
             max_provisioned_throughput: 9600
-      ai_gateway:
-        usage_tracking_config:
-          enabled: true
-        inference_table_config:
-          enabled: true
-          catalog_name: ${var.catalog}
-          schema_name: ${var.schema}
-          table_name_prefix: llama_endpoint
+        
+        # AI Gateway configuration for governance
+        ai_gateway:
+          usage_tracking_config:
+            enabled: true
+          
+          inference_table_config:
+            enabled: true
+            catalog_name: ${var.catalog}
+            schema_name: ${var.schema}
+            table_name_prefix: llama_endpoint
+          
+          # Optional: Rate limits
+          rate_limits:
+            - key: user
+              renewal_period: minute
+              calls: 100
+              
+          # Optional: Guardrails
+          guardrails:
+            input:
+              pii:
+                behavior: BLOCK
+            output:
+              pii:
+                behavior: BLOCK
+              safety: true
+      
+      permissions:
+        - level: CAN_QUERY
+          group_name: "users"
