@@ -7,6 +7,8 @@ resources:
           - name: llama-3-3-70b-hosted
             entity_name: system.ai.databricks-meta-llama-3-3-70b-instruct
             entity_version: "1"
+            min_provisioned_throughput: 0
+            max_provisioned_throughput: 9600
           - name: hr-ops-agent
             entity_name: main.default.hr_ops_agent
             entity_version: "2"
